@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BsSearch } from "react-icons/bs";
+import WeatherBox from "./weatherBox";
 
 function App() {
+  const search = () => {
+    console.log("Search");
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <div className="search-box">
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search..."
+            onKeyDown={(evt) => (evt.key === "Enter" ? search() : "")}
+          />
+          <button className="search-button" onClick={search}>
+            <BsSearch />
+          </button>
+        </div>
+
+        <WeatherBox place="Ernakulam" />
+      </main>
     </div>
   );
 }
